@@ -20,8 +20,9 @@ public class Main {
             getCoordinates(scanner, ship, battleBoard);
         }
         System.out.println("\nThe game starts!\n");
-        printBoard(battleBoard);
+        printBoardFOW(battleBoard);
         getCoordinates(scanner, battleBoard);
+        printBoard(battleBoard);
         scanner.close();
     }
 
@@ -42,6 +43,20 @@ public class Main {
             System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
             for (int j = 0; j < 10; j++) {
                 System.out.print(battleBoard[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private static void printBoardFOW(String[][] battleBoard) {
+        for (int i = 0; i <= 10; i++) {
+            System.out.print(i == 0 ? " " : " " + i);
+        }
+        System.out.println();
+        for (int i = 0; i < 10; i++) {
+            System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
+            for (int j = 0; j < 10; j++) {
+                System.out.print((battleBoard[i][j].equals("O") ? "~" : battleBoard[i][j]) + " ");
             }
             System.out.println();
         }
