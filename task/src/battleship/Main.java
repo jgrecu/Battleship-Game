@@ -19,6 +19,9 @@ public class Main {
             System.out.println();
             getCoordinates(scanner, ship, battleBoard);
         }
+        System.out.println("\nThe game starts!\n");
+        printBoard(battleBoard);
+        getCoordinates(scanner, battleBoard);
         scanner.close();
     }
 
@@ -44,20 +47,40 @@ public class Main {
         }
     }
 
-//    private static String[] getCoordinates() {
-//        String[] strings;
-//        try (Scanner scanner = new Scanner(System.in)) {
-//            String input = scanner.nextLine();
-//            if (input.length() < 5 || input.length() > 7) {
-//                System.out.println("Error! Invalid coordinates");
-//            }
-//            strings = input.split(" ");
-//        }
-//        System.out.println(Arrays.toString(strings));
-//        return strings;
-//    }
+    private static void getCoordinates(Scanner scanner, String[][] board) {
+        final String matcher = "[A-J][0-9]0?";
+
+        System.out.println("\nTake a shot!\n");
+
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (!input.matches(matcher)) {
+                System.out.println("Error! You entered the wrong coordinates! Try again:");
+                continue;
+            }
+
+
+            int y = LETTERS.indexOf(input.charAt(0));
+            int x = Integer.parseInt(input.substring(1)) - 1;
+
+            if (board[y][x].equals("O")) {
+                System.out.println("You hit a ship!");
+                board[y][x] = "X";
+                printBoard(board);
+            } else {
+                System.out.println("You missed!");
+                board[y][x] = "M";
+                printBoard(board);
+            }
+            break;
+
+        }
+
+}
 
     private static void getCoordinates(Scanner scanner, Ship value, String[][] board) {
+        final String matcher = "[A-J][0-9]0?(\\s*)?[A-J][0-9]0?";
         String[] strings;
 
         System.out.println("Enter the coordinates of the " + value.getName() + " (" + value.getSize() + " cells):");
@@ -65,9 +88,12 @@ public class Main {
         boolean isFound = false;
         while (!isFound) {
             String input = scanner.nextLine();
-            if (input.length() < 5 || input.length() > 7) {
-                System.out.println("Error! Invalid coordinates! Try again:");
+
+            if (!input.matches(matcher)) {
+                System.out.println("Error! You entered the wrong coordinates! Try again:");
+                continue;
             }
+
             strings = input.split("\\s+");
 
             if (checkCoordinates(strings, value, board)) {
@@ -86,11 +112,6 @@ public class Main {
     private static boolean checkCoordinates(String[] strings, Ship ship, String[][] board) {
         String start = strings[0];
         String end = strings[1];
-
-        if (LETTERS.indexOf(start.charAt(0)) == -1 || LETTERS.indexOf(end.charAt(0)) == -1) {
-            System.out.println("Error! Invalid coordinates! Try again:");
-            return false;
-        }
 
         int x1 = Integer.parseInt(strings[0].substring(1)) - 1;
         int x2 = Integer.parseInt(strings[1].substring(1)) - 1;
@@ -130,7 +151,7 @@ public class Main {
             int endPosX =   (thisPosX + 1 > MAX_X) ? thisPosX : thisPosX+1;
             int endPosY =   (thisPosY + 1 > MAX_Y) ? thisPosY : thisPosY+1;
 
-            System.out.println("thisX: " + thisPosX + " thisY: " + thisPosY);
+            //System.out.println("thisX: " + thisPosX + " thisY: " + thisPosY);
             for (int rowNum=startPosY; rowNum<=endPosY; rowNum++) {
                 for (int colNum=startPosX; colNum<=endPosX; colNum++) {
 
