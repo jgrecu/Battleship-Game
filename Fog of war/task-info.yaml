@@ -497,7 +497,7 @@ files:
         }
     }
   learner_created: false
-- name: src/battleship/Ship.java
+- name: src/battleship/ShipType.java
   visible: true
   text: |-
     package battleship;

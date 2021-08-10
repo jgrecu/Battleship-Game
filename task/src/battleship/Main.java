@@ -15,9 +15,9 @@ public class Main {
 
         //getCoordinates(scanner, Ships.DESTROYER, battleBoard);
 
-        for (Ship ship : Ship.values()) {
+        for (ShipType shipType : ShipType.values()) {
             System.out.println();
-            getCoordinates(scanner, ship, battleBoard);
+            getCoordinates(scanner, shipType, battleBoard);
         }
         System.out.println("\nThe game starts!\n");
         printBoardFOW(battleBoard);
@@ -93,7 +93,7 @@ public class Main {
 
 }
 
-    private static void getCoordinates(Scanner scanner, Ship value, String[][] board) {
+    private static void getCoordinates(Scanner scanner, ShipType value, String[][] board) {
         final String matcher = "[A-J][0-9]0?(\\s*)?[A-J][0-9]0?";
         String[] strings;
 
@@ -123,7 +123,7 @@ public class Main {
         //return ;
     }
 
-    private static boolean checkCoordinates(String[] strings, Ship ship, String[][] board) {
+    private static boolean checkCoordinates(String[] strings, ShipType shipType, String[][] board) {
         String start = strings[0];
         String end = strings[1];
 
@@ -134,15 +134,15 @@ public class Main {
 
 
         if (y1 == y2) {
-            if (Math.abs(x2 - x1) + 1 != ship.getSize()) {
-                System.out.println("Error! Wrong length of the " + ship.getName() + "! Try again:");
+            if (Math.abs(x2 - x1) + 1 != shipType.getSize()) {
+                System.out.println("Error! Wrong length of the " + shipType.getName() + "! Try again:");
                 return false;
             } else {
                 return checkValidShip(board, y1, x1, y2, x2);
             }
         } else if (x1 == x2) {
-            if (Math.abs(y2 - y1) + 1 != ship.getSize()) {
-                System.out.println("Error! Wrong length of the " + ship.getName() + "! Try again:");
+            if (Math.abs(y2 - y1) + 1 != shipType.getSize()) {
+                System.out.println("Error! Wrong length of the " + shipType.getName() + "! Try again:");
                 return false;
             } else {
                 return checkValidShip(board, y1, x1, y2, x2);
@@ -179,7 +179,7 @@ public class Main {
         return true;
     }
 
-    private static void placeShips(String[][] battleBoard, Ship ship, int y1, int x1, int y2, int x2) {
+    private static void placeShips(String[][] battleBoard, ShipType ship, int y1, int x1, int y2, int x2) {
         //final String[][] tempBoard = Arrays.copyOf(battleBoard, 10);
         for (int i = 0; i < ship.getSize(); i++) {
             if (y1 == y2) {
