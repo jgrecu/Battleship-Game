@@ -13,16 +13,17 @@ public class Main {
 
         printBoard(battleBoard);
 
-        //getCoordinates(scanner, Ships.DESTROYER, battleBoard);
-
         for (ShipType shipType : ShipType.values()) {
             System.out.println();
             getCoordinates(scanner, shipType, battleBoard);
         }
+
         System.out.println("\nThe game starts!\n");
+
         printBoardFOW(battleBoard);
         getCoordinates(scanner, battleBoard);
         printBoard(battleBoard);
+
         scanner.close();
     }
 
@@ -165,7 +166,6 @@ public class Main {
             int endPosX =   (thisPosX + 1 > MAX_X) ? thisPosX : thisPosX+1;
             int endPosY =   (thisPosY + 1 > MAX_Y) ? thisPosY : thisPosY+1;
 
-            //System.out.println("thisX: " + thisPosX + " thisY: " + thisPosY);
             for (int rowNum=startPosY; rowNum<=endPosY; rowNum++) {
                 for (int colNum=startPosX; colNum<=endPosX; colNum++) {
 
