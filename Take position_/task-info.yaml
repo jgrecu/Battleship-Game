@@ -282,6 +282,12 @@ files:
         }
     }
   learner_created: false
+- name: src/battleship/Ship.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/125/stages/663/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Tue, 10 Aug 2021 09:08:10 UTC
 record: -1
