@@ -67,12 +67,11 @@ public class Main {
             if (board[y][x].equals("O")) {
                 System.out.println("You hit a ship!");
                 board[y][x] = "X";
-                printBoard(board);
             } else {
                 System.out.println("You missed!");
                 board[y][x] = "M";
-                printBoard(board);
             }
+            printBoard(board);
             break;
 
         }
