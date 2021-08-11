@@ -1,9 +1,7 @@
 package battleship;
 
-import java.util.Arrays;
-
 public class GameField {
-    final private String[][] battleBoard;
+    //final private String[][] battleBoard;
     final private Cell[][] field = new Cell[10][10];
     final private String LETTERS = "ABCDEFGHIJ";
     final private int FIELDSIZE = 10;
@@ -15,10 +13,10 @@ public class GameField {
                 field[i][j] = new Cell(new Location(i, j));
             }
         }
-        this.battleBoard = new String[FIELDSIZE][FIELDSIZE];
-        for (String[] strings : this.battleBoard) {
-            Arrays.fill(strings, "~");
-        }
+//        this.battleBoard = new String[FIELDSIZE][FIELDSIZE];
+//        for (String[] strings : this.battleBoard) {
+//            Arrays.fill(strings, "~");
+//        }
     }
 
     public void printBoard() {
