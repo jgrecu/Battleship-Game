@@ -95,13 +95,13 @@ public class GameField {
             field[y][x].getShip().hit();
             field[y][x].setHitOrMiss(true);
             numberOfShips--;
-            printBoardFog();
+            //printBoardFog();
             return true;
         } else {
             System.out.println("You missed!");
             field[y][x].setHitOrMiss(true);
         }
-        printBoardFog();
+        //printBoardFog();
         return false;
     }
 

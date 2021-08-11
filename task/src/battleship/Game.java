@@ -17,21 +17,22 @@ public class Game {
     public void play() {
         initializePlayers();
         setBoard();
-        printBoards();
-
-        System.out.println("\nThe game starts!\n");
-        //startBattle();
+//        printBoardsP1();
+//
+//        System.out.println("\nThe game starts!\n");
+        startBattle();
         scanner.close();
     }
 
     private void initializePlayers() {
         players = new Player[numberOfPlayers];
         for (int i = 0; i < numberOfPlayers; i++) {
-            players[i] = new Player();
+            players[i] = new Player("Player " + (i + 1));
         }
     }
     private void setBoard() {
         for (Player player : players) {
+            System.out.println(player.getName() + ", place your ships on the game field\n");
             player.getField().printBoard();
             System.out.println();
 
@@ -39,21 +40,36 @@ public class Game {
                 System.out.println("Enter the coordinates of the " + shipType.getName() + " (" + shipType.getSize() + " cells):");
                 setShip(shipType, player);
             }
-            System.out.println("Press Enter and pass the move to another player");
+            System.out.println("\nPress Enter and pass the move to another player\n");
             scanner.nextLine();
         }
     }
 
-//    private void startBattle(){
-//        gameField.printBoardFog();
-//        System.out.println("\nTake a shot!\n");
-//        while (true) {
-//            String input = scanner.nextLine();
-//            if (gameField.getCoordinates(input)) {
-//                break;
-//            }
-//        }
-//    }
+    private void startBattle(){
+        int player = 1;
+        while (true) {
+            if (player % 2 != 0) {
+                printBoardsP1();
+                String input = scanner.nextLine();
+                if (players[0].takeShot(players[1],input)) {
+                    break;
+                } else {
+                    System.out.println("\nPress Enter and pass the move to another player\n");
+                    scanner.nextLine();
+                }
+            } else {
+                printBoardsP2();
+                String input = scanner.nextLine();
+                if (players[1].takeShot(players[0], input)) {
+                    break;
+                } else {
+                    System.out.println("\nPress Enter and pass the move to another player\n");
+                    scanner.nextLine();
+                }
+            }
+            player++;
+        }
+    }
 
     private void setShip(ShipType shipType, Player player){
         boolean placed = false;
@@ -62,9 +78,18 @@ public class Game {
             placed = player.getField().putShip(input, shipType);
         }
     }
-    private void printBoards() {
+
+    private void printBoardsP1() {
+        players[1].getField().printBoardFog();
+        System.out.println("---------------------");
+        players[0].getField().printBoard();
+        System.out.println("\n" + players[0].getName() + ", it's your turn:");
+    }
+
+    private void printBoardsP2() {
         players[0].getField().printBoardFog();
         System.out.println("---------------------");
-        players[1].getField().printBoardFog();
+        players[1].getField().printBoard();
+        System.out.println("\n" + players[1].getName() + ", it's your turn:");
     }
 }

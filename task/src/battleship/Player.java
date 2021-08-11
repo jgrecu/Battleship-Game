@@ -2,16 +2,23 @@ package battleship;
 
 public class Player {
     private GameField field;
+    private final String name;
 
-    public Player() {
+    public Player(String name) {
         this.field = new GameField();
+        this.name = name;
     }
 
     public GameField getField() {
         return field;
     }
 
-    public void takeShot(Player opponent, String coordinates) {
-        opponent.getField().getCoordinates(coordinates);
+    public String getName() {
+        return name;
     }
+
+    public boolean takeShot(Player opponent, String coordinates) {
+        return opponent.getField().getCoordinates(coordinates);
+    }
+
 }
