@@ -3,7 +3,7 @@ package battleship;
 import java.util.Arrays;
 
 public class GameField {
-    private String[][] battleBoard;
+    final private String[][] battleBoard;
     final private String LETTERS = "ABCDEFGHIJ";
     final private int FIELDSIZE = 10;
 
@@ -15,10 +15,7 @@ public class GameField {
     }
 
     public void printBoard() {
-        for (int i = 0; i <= 10; i++) {
-            System.out.print(i == 0 ? " " : " " + i);
-        }
-        System.out.println();
+        System.out.println("  1 2 3 4 5 6 7 8 9 10");
         for (int i = 0; i < 10; i++) {
             System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
             for (int j = 0; j < 10; j++) {
@@ -29,10 +26,7 @@ public class GameField {
     }
 
     public void printBoardFog() {
-        for (int i = 0; i <= 10; i++) {
-            System.out.print(i == 0 ? " " : " " + i);
-        }
-        System.out.println();
+        System.out.println("  1 2 3 4 5 6 7 8 9 10");
         for (int i = 0; i < 10; i++) {
             System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
             for (int j = 0; j < 10; j++) {
@@ -64,11 +58,9 @@ public class GameField {
         return true;
     }
 
-        public boolean getShipCoordinates(String input, ShipType shipType) {
+        public boolean putShip(String input, ShipType shipType) {
         final String matcher = "[A-J][0-9]0?(\\s*)?[A-J][0-9]0?";
         String[] strings;
-
-        System.out.println("Enter the coordinates of the " + shipType.getName() + " (" + shipType.getSize() + " cells):");
 
         if (!input.matches(matcher)) {
             System.out.println("Error! You entered the wrong coordinates! Try again:");
@@ -91,24 +83,29 @@ public class GameField {
     }
 
     private boolean checkCoordinates(int y1, int x1, int y2, int x2, ShipType shipType) {
-        if (y1 == y2) {
-            if (Math.abs(x2 - x1) + 1 != shipType.getSize()) {
-                System.out.println("Error! Wrong length of the " + shipType.getName() + "! Try again:");
-                return false;
-            } else {
+        if (checkDiagonals(y1, x1, y2, x2)) {
+            int size = x1 == x2 ? Math.abs(y2 - y1) + 1 : Math.abs(x2 - x1) + 1;
+            if (checkShipLength(size, shipType)) {
                 return checkValidShip(y1, x1, y2, x2);
             }
-        } else if (x1 == x2) {
-            if (Math.abs(y2 - y1) + 1 != shipType.getSize()) {
-                System.out.println("Error! Wrong length of the " + shipType.getName() + "! Try again:");
-                return false;
-            } else {
-                return checkValidShip(y1, x1, y2, x2);
-            }
-        } else {
+        }
+        return false;
+    }
+
+    private boolean checkDiagonals(int y1, int x1, int y2, int x2) {
+        if (y1 != y2 && x1 != x2) {
             System.out.println("Error! Wrong ship location! Try again:");
             return false;
         }
+        return true;
+    }
+
+    private boolean checkShipLength(int size, ShipType shipType) {
+        if (size != shipType.getSize()) {
+            System.out.println("Error! Wrong length of the " + shipType.getName() + "! Try again:");
+            return false;
+        }
+        return true;
     }
 
     private boolean checkValidShip(int y1, int x1, int y2, int x2) {

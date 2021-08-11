@@ -550,6 +550,9 @@ files:
         }
     }
   learner_created: true
+- name: src/battleship/Game.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/125/stages/666/implement#comment
 status: Unchecked
 record: -1
