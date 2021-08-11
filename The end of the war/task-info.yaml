@@ -553,6 +553,95 @@ files:
 - name: src/battleship/Game.java
   visible: true
   learner_created: true
+- name: src/battleship/Ship.java
+  visible: true
+  learner_created: true
+- name: src/battleship/Location.java
+  visible: true
+  learner_created: true
+- name: src/battleship/Cell.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/125/stages/666/implement#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: "Wrong answer in test #1\n\nCan&#39;t parse the game field\nMake sure you\
+    \ print it like in examples!\n\nPlease find below the output of your program during\
+    \ this failed test.\nNote that the &#39;&gt;&#39; character indicates the beginning\
+    \ of the input line.\n\n---\n\n[last 250 lines of output are shown, 164 skipped]\n\
+    J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; E4\nYou missed!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~\
+    \ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ ~ ~ \nC X ~ ~ ~ ~ ~ ~ ~ ~ ~ \nD X ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ \nE ~ ~ ~ M ~ ~ ~ ~ ~ ~ \nF ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~\
+    \ ~ \n&gt; B9\nYou hit a ship!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~\
+    \ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ ~ ~ \nD X ~ ~ ~ ~ ~ ~ ~ ~ ~ \nE\
+    \ ~ ~ ~ M ~ ~ ~ ~ ~ ~ \nF ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~\
+    \ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; C9\n\
+    You hit a ship!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~\
+    \ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ ~ ~ \nE ~ ~ ~ M ~ ~ ~ ~\
+    \ ~ ~ \nF ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\
+    \ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; D9\nYou sank a ship!\
+    \ Specify a new target:\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~\
+    \ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M\
+    \ ~ ~ ~ ~ ~ ~ \nF ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; E9\nYou missed!\n\
+    \  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~\
+    \ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; F3\nYou hit a ship!\n  1 2 3 4 5 6 7\
+    \ 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X\
+    \ ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X ~ ~ ~ ~ ~ ~ ~ \n\
+    G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~\
+    \ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; F4\nYou hit a ship!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~\
+    \ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~\
+    \ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X ~ ~ ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~\
+    \ ~ \n&gt; F5\nYou hit a ship!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~\
+    \ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE\
+    \ ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X X ~ ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~\
+    \ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; F6\n\
+    You hit a ship!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~\
+    \ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~\
+    \ M ~ \nF ~ ~ X X X X ~ ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\
+    \ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; F7\nYou sank a ship!\
+    \ Specify a new target:\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~\
+    \ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M\
+    \ ~ ~ ~ ~ M ~ \nF ~ ~ X X X X X ~ ~ ~ \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; F10\nYou missed!\n\
+    \  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~\
+    \ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X\
+    \ X X X ~ ~ M \nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; G8\nYou missed!\n  1 2 3 4 5 6 7 8 9\
+    \ 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \n\
+    D X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X X X X ~ ~ M \nG ~ ~\
+    \ ~ ~ ~ ~ ~ M ~ ~ \nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~ \n&gt; G5\nYou missed!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~\
+    \ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X\
+    \ ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X X X X ~ ~ M \nG ~ ~ ~ ~ M ~ ~ M ~ ~ \n\
+    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; H2\n\
+    You missed!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~\
+    \ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~\
+    \ \nF ~ ~ X X X X X ~ ~ M \nG ~ ~ ~ ~ M ~ ~ M ~ ~ \nH ~ M ~ ~ ~ ~ ~ ~ ~ ~ \nI\
+    \ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; I2\nYou hit a ship!\n  1\
+    \ 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~\
+    \ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X X\
+    \ X X ~ ~ M \nG ~ ~ ~ ~ M ~ ~ M ~ ~ \nH ~ M ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ X ~ ~ ~ ~ ~\
+    \ ~ ~ ~ \nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; J2\nYou sank a ship! Specify a new target:\n\
+    \  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~\
+    \ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X\
+    \ X X X ~ ~ M \nG ~ ~ ~ ~ M ~ ~ M ~ ~ \nH ~ M ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ X ~ ~ ~ ~\
+    \ ~ ~ ~ ~ \nJ ~ X ~ ~ ~ ~ ~ ~ ~ ~ \n&gt; J6\nYou missed!\n  1 2 3 4 5 6 7 8 9\
+    \ 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \n\
+    D X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X X X X ~ ~ M \nG ~ ~\
+    \ ~ ~ M ~ ~ M ~ ~ \nH ~ M ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ X ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ X ~ ~\
+    \ ~ M ~ ~ ~ ~ \n&gt; J8\nYou hit a ship!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~\
+    \ ~ ~ ~ ~ ~ \nB X ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~\
+    \ ~ X ~ \nE ~ ~ ~ M ~ ~ ~ ~ M ~ \nF ~ ~ X X X X X ~ ~ M \nG ~ ~ ~ ~ M ~ ~ M ~\
+    \ ~ \nH ~ M ~ ~ ~ ~ ~ ~ ~ ~ \nI ~ X ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ X ~ ~ ~ M ~ X ~ ~ \n\
+    &gt; J9\nYou hit a ship!\n  1 2 3 4 5 6 7 8 9 10\nA X M ~ ~ ~ ~ ~ ~ ~ ~ \nB X\
+    \ ~ ~ ~ ~ ~ ~ ~ X ~ \nC X ~ ~ ~ ~ ~ ~ ~ X ~ \nD X ~ ~ ~ ~ ~ ~ ~ X ~ \nE ~ ~ ~\
+    \ M ~ ~ ~ ~ M ~ \nF ~ ~ X X X X X ~ ~ M \nG ~ ~ ~ ~ M ~ ~ M ~ ~ \nH ~ M ~ ~ ~\
+    \ ~ ~ ~ ~ ~ \nI ~ X ~ ~ ~ ~ ~ ~ ~ ~ \nJ ~ X ~ ~ ~ M ~ X X ~ \n&gt; J10\nYou sank\
+    \ the last ship. You won. Congratulations!"
+  time: Wed, 11 Aug 2021 12:10:58 UTC
 record: -1

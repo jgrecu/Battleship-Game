@@ -4,10 +4,17 @@ import java.util.Arrays;
 
 public class GameField {
     final private String[][] battleBoard;
+    final private Cell[][] field = new Cell[10][10];
     final private String LETTERS = "ABCDEFGHIJ";
     final private int FIELDSIZE = 10;
+    private int numberOfShips = 0;
 
     public GameField() {
+        for (int i = 0; i < FIELDSIZE; i++) {
+            for (int j = 0; j < FIELDSIZE; j++) {
+                field[i][j] = new Cell(new Location(i, j));
+            }
+        }
         this.battleBoard = new String[FIELDSIZE][FIELDSIZE];
         for (String[] strings : this.battleBoard) {
             Arrays.fill(strings, "~");
@@ -19,23 +26,52 @@ public class GameField {
         for (int i = 0; i < 10; i++) {
             System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
             for (int j = 0; j < 10; j++) {
-                System.out.print(battleBoard[i][j] + " ");
+                System.out.print(field[i][j].getShip() != null ? "O ": "~ ");
             }
             System.out.println();
         }
     }
 
     public void printBoardFog() {
+        String state;
         System.out.println("  1 2 3 4 5 6 7 8 9 10");
         for (int i = 0; i < 10; i++) {
             System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
             for (int j = 0; j < 10; j++) {
-                System.out.print((battleBoard[i][j].equals("O") ? "~" : battleBoard[i][j]) + " ");
+                if (field[i][j].isHitOrMiss() && field[i][j].getShip() == null) {
+                    state = "M ";
+                } else if (field[i][j].isHitOrMiss() && field[i][j].getShip() != null) {
+                    state = "X ";
+                } else {
+                    state = "~ ";
+                }
+                System.out.print(state);
             }
             System.out.println();
         }
     }
 
+//    public boolean getCoordinates(String input) {
+//        final String matcher = "[A-J][0-9]0?";
+//
+//        if (!input.matches(matcher)) {
+//            System.out.println("Error! You entered the wrong coordinates! Try again:");
+//            return false;
+//        }
+//
+//        int y = LETTERS.indexOf(input.charAt(0));
+//        int x = Integer.parseInt(input.substring(1)) - 1;
+//
+//        if (battleBoard[y][x].equals("O")) {
+//            System.out.println("You hit a ship!");
+//            battleBoard[y][x] = "X";
+//        } else {
+//            System.out.println("You missed!");
+//            battleBoard[y][x] = "M";
+//        }
+//        printBoard();
+//        return true;
+//    }
     public boolean getCoordinates(String input) {
         final String matcher = "[A-J][0-9]0?";
 
@@ -47,15 +83,28 @@ public class GameField {
         int y = LETTERS.indexOf(input.charAt(0));
         int x = Integer.parseInt(input.substring(1)) - 1;
 
-        if (battleBoard[y][x].equals("O")) {
+        if (field[y][x].getShip() != null && field[y][x].getShip().getLives() > 1) {
             System.out.println("You hit a ship!");
-            battleBoard[y][x] = "X";
+            field[y][x].getShip().hit();
+            field[y][x].setHitOrMiss(true);
+        } else if (field[y][x].getShip() != null && field[y][x].getShip().getLives() == 1 && numberOfShips > 1) {
+            System.out.println("You sank a ship! Specify a new target:");
+            field[y][x].getShip().hit();
+            field[y][x].setHitOrMiss(true);
+            numberOfShips--;
+        } else if (field[y][x].getShip() != null && field[y][x].getShip().getLives() == 1 && numberOfShips == 1) {
+            System.out.println("You sank the last ship. You won. Congratulations!");
+            field[y][x].getShip().hit();
+            field[y][x].setHitOrMiss(true);
+            numberOfShips--;
+            printBoardFog();
+            return true;
         } else {
             System.out.println("You missed!");
-            battleBoard[y][x] = "M";
+            field[y][x].setHitOrMiss(true);
         }
-        printBoard();
-        return true;
+        printBoardFog();
+        return false;
     }
 
         public boolean putShip(String input, ShipType shipType) {
@@ -123,7 +172,7 @@ public class GameField {
             for (int rowNum=startPosY; rowNum<=endPosY; rowNum++) {
                 for (int colNum=startPosX; colNum<=endPosX; colNum++) {
 
-                    if (!battleBoard[rowNum][colNum].equals("~")) {
+                    if (field[rowNum][colNum].getShip() != null) {
                         System.out.println("Error! You placed it too close to another one. Try again:");
                         return false;
                     }
@@ -134,12 +183,14 @@ public class GameField {
     }
 
     private void placeShips(int y1, int x1, int y2, int x2, ShipType shipType) {
+        Ship tempShip = new Ship(shipType);
         for (int i = 0; i < shipType.getSize(); i++) {
             if (y1 == y2) {
-                battleBoard[y1][i + Math.min(x1,x2)] = "O";
+                field[y1][i + Math.min(x1,x2)].setShip(tempShip);
             } else if (x1 == x2) {
-                battleBoard[Math.min(y1,y2) + i][x1] = "O";
+                field[Math.min(y1,y2) + i][x1].setShip(tempShip);
             }
         }
+        numberOfShips++;
     }
 }
