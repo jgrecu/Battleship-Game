@@ -1,7 +1,6 @@
 package battleship;
 
 public class GameField {
-    //final private String[][] battleBoard;
     final private Cell[][] field = new Cell[10][10];
     final private String LETTERS = "ABCDEFGHIJ";
     final private int FIELDSIZE = 10;
@@ -13,18 +12,24 @@ public class GameField {
                 field[i][j] = new Cell(new Location(i, j));
             }
         }
-//        this.battleBoard = new String[FIELDSIZE][FIELDSIZE];
-//        for (String[] strings : this.battleBoard) {
-//            Arrays.fill(strings, "~");
-//        }
     }
 
     public void printBoard() {
+        String state;
         System.out.println("  1 2 3 4 5 6 7 8 9 10");
         for (int i = 0; i < 10; i++) {
             System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
             for (int j = 0; j < 10; j++) {
-                System.out.print(field[i][j].getShip() != null ? "O ": "~ ");
+                if (field[i][j].getShip() != null && !field[i][j].isHitOrMiss()) {
+                    state = "O";
+                } else if (field[i][j].isHitOrMiss() && field[i][j].getShip() == null) {
+                    state = "M ";
+                } else if (field[i][j].isHitOrMiss() && field[i][j].getShip() != null) {
+                    state = "X ";
+                } else {
+                    state = "~ ";
+                }
+                System.out.print(state);
             }
             System.out.println();
         }
@@ -49,27 +54,6 @@ public class GameField {
         }
     }
 
-//    public boolean getCoordinates(String input) {
-//        final String matcher = "[A-J][0-9]0?";
-//
-//        if (!input.matches(matcher)) {
-//            System.out.println("Error! You entered the wrong coordinates! Try again:");
-//            return false;
-//        }
-//
-//        int y = LETTERS.indexOf(input.charAt(0));
-//        int x = Integer.parseInt(input.substring(1)) - 1;
-//
-//        if (battleBoard[y][x].equals("O")) {
-//            System.out.println("You hit a ship!");
-//            battleBoard[y][x] = "X";
-//        } else {
-//            System.out.println("You missed!");
-//            battleBoard[y][x] = "M";
-//        }
-//        printBoard();
-//        return true;
-//    }
     public boolean getCoordinates(String input) {
         final String matcher = "[A-J][0-9]0?";
 
