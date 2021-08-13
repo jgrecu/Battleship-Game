@@ -21,7 +21,7 @@ public class GameField {
             System.out.print(Character.valueOf(LETTERS.charAt(i)).toString() + " ");
             for (int j = 0; j < 10; j++) {
                 if (field[i][j].getShip() != null && !field[i][j].isHitOrMiss()) {
-                    state = "O";
+                    state = "O ";
                 } else if (field[i][j].isHitOrMiss() && field[i][j].getShip() == null) {
                     state = "M ";
                 } else if (field[i][j].isHitOrMiss() && field[i][j].getShip() != null) {
